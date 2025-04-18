@@ -21,18 +21,6 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val respuesta = RetrofitPokemon.api().getPokemonDetail(1)
-        respuesta.enqueue(object : Callback<Pokemon>{
-            override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
-                println("respondio")
-            }
-
-            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
-                println("fallo")
-
-            }
-
-        })
 
 
     }
