@@ -1,14 +1,15 @@
 package com.example.pokeapi.presenter.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokeapi.R
 import com.example.pokeapi.databinding.PokemonListFrgBinding
 import com.example.pokeapi.presenter.viewmodel.PokemonListViewModel
 
@@ -32,9 +33,9 @@ class PokemonListFrg : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.recyclerListPoke.layoutManager = LinearLayoutManager(requireContext())
         binding.btnLoad.setOnClickListener{
+            binding.btnLoad.isEnabled = false
             binding.progressLayout.visibility = View.VISIBLE
             binding.progressBar.progress = 0
             binding.progresText.text = "0%"
@@ -51,11 +52,11 @@ class PokemonListFrg : Fragment() {
         }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressLayout.visibility = if (isLoading) View.VISIBLE else View.GONE
-
+            binding.btnLoad.isEnabled = !isLoading
         }
         viewModel.progressValue.observe(viewLifecycleOwner){ progress ->
             binding.progressBar.progress = progress
-            binding.progresText.text = progress.toString()
+            binding.progresText.text = progress.toString() + "% Pokemons"
         }
 
     }
