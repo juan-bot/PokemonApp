@@ -14,13 +14,16 @@
 
         <Button
             android:id="@+id/btnLoad"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
             android:text="@string/cargar_pokemons"
             />
 
 
         <com.google.android.material.textfield.TextInputLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -35,6 +38,7 @@
             app:endIconTint="#99CE89C0"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/buscar"

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -59,6 +60,8 @@ class PokemonListFrg : Fragment() {
         viewModel.error.observe(viewLifecycleOwner) { error ->
             Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_LONG).show()
         }
-
+        binding.search.addTextChangedListener{ words ->
+            viewModel.searchPoke(words.toString())
+        }
     }
 }
