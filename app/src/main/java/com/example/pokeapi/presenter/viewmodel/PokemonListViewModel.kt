@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokeapi.data.PokemonRepositoryImpl
 import com.example.pokeapi.domain.model.Pokemon
+import com.example.pokeapi.domain.model.ResultState
 import com.example.pokeapi.domain.usecase.GetPokemonListUseCase
-import com.example.pokeapi.presenter.ui.PokemonAdapter
 import kotlinx.coroutines.launch
 
 
@@ -26,6 +26,8 @@ class PokemonListViewModel: ViewModel(){
     private val _progressValue = MutableLiveData<Int>()
     val progressValue: LiveData<Int> get() = _progressValue
 
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
     fun loadPoke(){
 
         viewModelScope.launch {
@@ -36,10 +38,18 @@ class PokemonListViewModel: ViewModel(){
                     _progressValue.value = percent
                     Log.d("PROGRESS",percent.toString())
                 }
-                _pokeList.postValue(result)
+                when (result){
+                    is ResultState.Success -> {
+                        _pokeList.value = result.data
+                    }
+                    is ResultState.Error -> {
+                        _error.value = "Error al cargar los pokemones ${result.exception.message.toString()}"
+                    }
+                }
                 _isLoading.value = false
-            }catch(_: Exception){
-
+            }catch(e: Exception){
+                _error.value = "Error al cargar los pokemones"
+                Log.e("PokemonViewModel", "Error al cargar los pokemones", e)
             }finally {
                 _isLoading.value = false
             }

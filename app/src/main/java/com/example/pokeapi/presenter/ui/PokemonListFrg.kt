@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokeapi.R
 import com.example.pokeapi.databinding.PokemonListFrgBinding
 import com.example.pokeapi.presenter.viewmodel.PokemonListViewModel
 
@@ -30,7 +29,6 @@ class PokemonListFrg : Fragment() {
         binding = PokemonListFrgBinding.inflate(inflater,container,false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerListPoke.layoutManager = LinearLayoutManager(requireContext())
@@ -57,6 +55,9 @@ class PokemonListFrg : Fragment() {
         viewModel.progressValue.observe(viewLifecycleOwner){ progress ->
             binding.progressBar.progress = progress
             binding.progresText.text = progress.toString() + "% Pokemons"
+        }
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_LONG).show()
         }
 
     }

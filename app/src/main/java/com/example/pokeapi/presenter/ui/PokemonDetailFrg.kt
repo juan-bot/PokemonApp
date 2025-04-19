@@ -1,14 +1,13 @@
 package com.example.pokeapi.presenter.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.example.pokeapi.R
 import com.example.pokeapi.databinding.PokemonDetailFrgBinding
 import com.example.pokeapi.presenter.viewmodel.PokemonDetailViewModel
 
@@ -37,7 +36,9 @@ private val viewModel: PokemonDetailViewModel by viewModels()
             binding.textHeight.text = pokemon.height.toString()
             binding.textAbility.text = pokemon.abilities[0].ability.name
             Glide.with(view).load(pokemon.sprites.front_shiny).into(binding.pokemonImage)
-
+        }
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }
