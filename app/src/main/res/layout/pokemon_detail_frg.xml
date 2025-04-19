@@ -21,7 +21,6 @@
         android:id="@+id/pokemonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pikachu"
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
@@ -34,7 +33,6 @@
         android:id="@+id/pokemonNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="#025"
         android:textSize="18sp"
         android:textColor="#FFFFFF"
         app:layout_constraintTop_toBottomOf="@id/pokemonName"
@@ -56,6 +54,7 @@
         android:id="@+id/pokemonImage"
         android:layout_width="180dp"
         android:layout_height="180dp"
+        android:contentDescription="@string/imgdescription"
         android:scaleType="fitCenter"
         app:layout_constraintTop_toBottomOf="@id/heroBackground"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +86,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:baselineAligned="false"
                     android:orientation="horizontal"
                     android:padding="20dp"
                     android:gravity="center">
@@ -101,13 +101,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Altura"
+                            android:text="@string/altura"
                             android:textColor="#888888"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/textHeight"
-                            android:text="0.4 m"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -122,13 +121,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Peso"
+                            android:text="@string/peso"
                             android:textColor="#888888"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/textWeight"
-                            android:text="6.0 kg"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -143,13 +141,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Habilidad"
+                            android:text="@string/habilidad"
                             android:textColor="#888888"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/textAbility"
-                            android:text="Electricidad Estática"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
                     </LinearLayout>

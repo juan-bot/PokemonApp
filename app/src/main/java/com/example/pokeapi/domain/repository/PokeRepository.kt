@@ -5,5 +5,5 @@ import com.example.pokeapi.domain.model.Pokemon
 
 interface PokeRepository {
     suspend fun getAllPokemon(): List<Pokemon>
-    suspend fun getPokemon(): Pokemon
+    suspend fun getPokemon(name: String): Pokemon
 }

@@ -16,8 +16,9 @@ class PokemonRepositoryImpl : PokeRepository {
         }
     }
 
-    override suspend fun getPokemon(): Pokemon {
-        TODO("Not yet implemented")
+    override suspend fun getPokemon(name: String): Pokemon {
+        return RetrofitPokemon.api().getPokemonDetail(name)
+
     }
 
 

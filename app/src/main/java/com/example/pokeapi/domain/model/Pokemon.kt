@@ -1,7 +1,7 @@
 package com.example.pokeapi.domain.model
 
 data class Pokemon(
-    val abilities: List<Ability>,
+    val abilities: List<Abilities>,
     val base_experience: Int,
     val cries: Cries,
     val forms: List<Form>,
