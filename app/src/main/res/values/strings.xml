@@ -7,5 +7,7 @@
     <string name="habilidad">Habilidad</string>
     <string name="imgdescription">imgDescription</string>
     <string name="cargar_pokemons">Cargar Pokemons</string>
-    <string name="buscar">Buscar..</string>
+    <string name="buscar">Busca tu pokemon...</string>
+    <string name="logo">logo</string>
+    <string name="pokebola">pokebola</string>
 </resources>

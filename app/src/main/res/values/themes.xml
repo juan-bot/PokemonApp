@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.PokeApi" parent="Base.Theme.PokeApi" />
+    <!-- Tema Splash -->
+    <style name="Theme.MyApp.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor" >#FF1A1A</item>
+
+    </style>
 </resources>
