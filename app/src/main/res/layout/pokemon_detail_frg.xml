@@ -7,11 +7,10 @@
     android:padding="16dp"
     tools:context=".presenter.ui.PokemonDetailFrg">
 
-
     <View
         android:id="@+id/heroBackground"
         android:layout_width="0dp"
-        android:layout_height="240dp"
+        android:layout_height="260dp"
         android:background="#FFEB3B"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,39 +20,18 @@
         android:id="@+id/pokemonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
+        android:textSize="42sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"
         app:layout_constraintTop_toTopOf="@id/heroBackground"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="32dp" />
-
-    <TextView
-        android:id="@+id/pokemonNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/pokemonName"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp" />
-
-    <LinearLayout
-        android:id="@+id/pokemonTypesLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/pokemonNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp" />
 
     <ImageView
         android:id="@+id/pokemonImage"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
         android:contentDescription="@string/imgdescription"
         android:scaleType="fitCenter"
         app:layout_constraintTop_toBottomOf="@id/heroBackground"
