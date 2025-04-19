@@ -13,7 +13,9 @@
         <action
             android:id="@+id/pokemonListFrg_to_pokemonDetailFrg"
             app:destination="@id/pokemonDetailFrg" >
-
+            <argument
+                android:name="pokemonName"
+                app:argType="string" />
         </action>
     </fragment>
     <fragment
@@ -21,6 +23,8 @@
         android:name="com.example.pokeapi.presenter.ui.PokemonDetailFrg"
         android:label="pokemon_detail_frg"
         tools:layout="@layout/pokemon_detail_frg" >
-
+        <argument
+            android:name="pokemonName"
+            app:argType="string" />
     </fragment>
 </navigation>

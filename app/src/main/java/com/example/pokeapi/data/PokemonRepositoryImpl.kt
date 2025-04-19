@@ -16,5 +16,9 @@ class PokemonRepositoryImpl : PokeRepository {
         }
     }
 
+    override suspend fun getPokemon(): Pokemon {
+        TODO("Not yet implemented")
+    }
+
 
 }

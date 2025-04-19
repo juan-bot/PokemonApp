@@ -11,7 +11,10 @@ import com.example.pokeapi.R
 import com.example.pokeapi.domain.model.PokeResponse
 import com.example.pokeapi.domain.model.Pokemon
 
-class PokemonAdapter(private val dataSet: List<Pokemon>) :
+class PokemonAdapter(
+    private val dataSet: List<Pokemon>,
+    private val onItemClick: (Pokemon) -> Unit
+) :
     RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -25,13 +28,18 @@ class PokemonAdapter(private val dataSet: List<Pokemon>) :
         val txtDescription: TextView = view.findViewById(R.id.itemDescription)
         val txtWei: TextView = view.findViewById(R.id.itemWeight)
         val imgPoke: ImageView = view.findViewById(R.id.itemImage)
+
+
     }
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
+        val pokemon = dataSet[position]
         viewHolder.txtName.text = dataSet[position].name
         viewHolder.txtDescription.text = "Base Experience:" + dataSet[position].base_experience.toString()
         viewHolder.txtWei.text = dataSet[position].weight.toString()
         Glide.with(viewHolder.itemView.context).load(dataSet[position].sprites.back_default).into(viewHolder.imgPoke)
+        viewHolder.itemView.setOnClickListener{
+            onItemClick(pokemon)
+        }
     }
 
     override fun getItemCount() = dataSet.size
