@@ -1,12 +1,13 @@
-package com.example.pokeapi
+package com.example.pokeapi.presenter.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.pokeapi.R
 
-class PokemonListFrg : Fragment() {
+class PokemonDetailFrg : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +19,7 @@ class PokemonListFrg : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.pokemon_list_frg, container, false)
+        return inflater.inflate(R.layout.pokemon_detail_frg, container, false)
     }
 
 }

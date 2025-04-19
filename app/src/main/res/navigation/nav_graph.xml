@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pokemonListFrg"
-        android:name="com.example.pokeapi.PokemonListFrg"
+        android:name="com.example.pokeapi.presenter.ui.PokemonListFrg"
         android:label="pokemon_list_frg"
         tools:layout="@layout/pokemon_list_frg" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailFrg"
-        android:name="com.example.pokeapi.PokemonDetailFrg"
+        android:name="com.example.pokeapi.presenter.ui.PokemonDetailFrg"
         android:label="pokemon_detail_frg"
         tools:layout="@layout/pokemon_detail_frg" >
 
