@@ -1,5 +1,6 @@
 package com.example.pokeapi.presenter.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,15 +20,28 @@ class PokemonListViewModel: ViewModel(){
     private val repository = PokemonRepositoryImpl()
     private val getPokemonListUseCase = GetPokemonListUseCase(repository)
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
+    private val _progressValue = MutableLiveData<Int>()
+    val progressValue: LiveData<Int> get() = _progressValue
+
     fun loadPoke(){
 
         viewModelScope.launch {
             try {
-                val result = getPokemonListUseCase.execute()
+                _isLoading.value = true
+                _progressValue.value = 0
+                val result = getPokemonListUseCase.execute{ percent ->
+                    _progressValue.value = percent
+                    Log.d("PROGRESS",percent.toString())
+                }
                 _pokeList.postValue(result)
-
+                _isLoading.value = false
             }catch(_: Exception){
 
+            }finally {
+                _isLoading.value = false
             }
         }
     }

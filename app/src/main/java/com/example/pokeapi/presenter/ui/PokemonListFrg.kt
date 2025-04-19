@@ -1,6 +1,7 @@
 package com.example.pokeapi.presenter.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,9 @@ class PokemonListFrg : Fragment() {
 
         binding.recyclerListPoke.layoutManager = LinearLayoutManager(requireContext())
         binding.btnLoad.setOnClickListener{
+            binding.progressLayout.visibility = View.VISIBLE
+            binding.progressBar.progress = 0
+            binding.progresText.text = "0%"
             viewModel.loadPoke()
         }
 
@@ -45,5 +49,14 @@ class PokemonListFrg : Fragment() {
             }
             binding.recyclerListPoke.adapter = adapter
         }
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressLayout.visibility = if (isLoading) View.VISIBLE else View.GONE
+
+        }
+        viewModel.progressValue.observe(viewLifecycleOwner){ progress ->
+            binding.progressBar.progress = progress
+            binding.progresText.text = progress.toString()
+        }
+
     }
 }

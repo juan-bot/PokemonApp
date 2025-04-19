@@ -6,4 +6,6 @@
     <string name="peso">Peso</string>
     <string name="habilidad">Habilidad</string>
     <string name="imgdescription">imgDescription</string>
+    <string name="cargar_pokemons">Cargar Pokemons</string>
+    <string name="buscar">Buscar..</string>
 </resources>

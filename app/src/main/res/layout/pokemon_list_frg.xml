@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,38 +7,71 @@
     android:orientation="vertical"
     tools:context=".presenter.ui.PokemonListFrg">
 
-    <Button
-        android:id="@+id/btnLoad"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cargar Pokemons"
-        />
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:boxBackgroundMode="outline"
-        android:elevation="8dp"
-        android:translationZ="8dp"
-        app:startIconDrawable="@drawable/ic_search"
-        app:boxCornerRadiusTopStart="16dp"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:endIconTint="#99CE89C0"
-        >
-        <com.google.android.material.textfield.TextInputEditText
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnLoad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Buscar.."
-            android:imeOptions="actionSearch"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/cargar_pokemons"
+            />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_list_poke"
-        android:clipToPadding="false"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:boxBackgroundMode="outline"
+            android:elevation="8dp"
+            android:translationZ="8dp"
+            app:startIconDrawable="@drawable/ic_search"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:endIconTint="#99CE89C0"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/buscar"
+                android:imeOptions="actionSearch"
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list_poke"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/progressLayout"
+        android:orientation="vertical"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"/>
+        <TextView
+            android:id="@+id/progresText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="8dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
 
-</LinearLayout>
+
+</FrameLayout>

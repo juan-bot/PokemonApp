@@ -7,8 +7,8 @@ import com.example.pokeapi.domain.repository.PokeRepository
 class GetPokemonListUseCase (
     private val repository: PokeRepository
 ){
-    suspend fun execute(): List<Pokemon> {
-        return repository.getAllPokemon()
+    suspend fun execute(onProgress: (Int) -> Unit): List<Pokemon> {
+        return repository.getAllPokemon(onProgress)
     }
 
 }
