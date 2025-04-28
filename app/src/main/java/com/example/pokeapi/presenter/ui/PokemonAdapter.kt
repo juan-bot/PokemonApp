@@ -32,14 +32,20 @@ class PokemonAdapter(
 
     }
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val pokemon = dataSet[position]
-        viewHolder.txtName.text = dataSet[position].name
-        viewHolder.txtDescription.text = "Base Experience:" + dataSet[position].base_experience.toString()
-        viewHolder.txtWei.text = dataSet[position].weight.toString()
-        Glide.with(viewHolder.itemView.context).load(dataSet[position].sprites.back_default).into(viewHolder.imgPoke)
-        viewHolder.itemView.setOnClickListener{
-            onItemClick(pokemon)
+        if(dataSet.isNotEmpty()){
+            val pokemon = dataSet[position]
+            viewHolder.txtName.text = dataSet[position].name
+            viewHolder.txtDescription.text = "Base Experience:" + dataSet[position].base_experience.toString()
+            viewHolder.txtWei.text = dataSet[position].weight.toString()
+            Glide.with(viewHolder.itemView.context)
+                .load(pokemon.sprites?.back_default ?: "https://images.app.goo.gl/73WRS1pZMUsUk2ru9")
+                .into(viewHolder.imgPoke)
+            //Glide.with(viewHolder.itemView.context).load(dataSet[position].sprites.back_default).into(viewHolder.imgPoke)
+            viewHolder.itemView.setOnClickListener{
+                onItemClick(pokemon)
+            }
         }
+
     }
 
     override fun getItemCount() = dataSet.size

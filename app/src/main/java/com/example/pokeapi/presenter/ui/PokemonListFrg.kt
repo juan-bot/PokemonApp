@@ -44,8 +44,11 @@ class PokemonListFrg : Fragment() {
         viewModel.pokelist.observe(viewLifecycleOwner){ pokemonList ->
 
             adapter = PokemonAdapter(pokemonList){ selectedPokemon ->
-                val action = PokemonListFrgDirections.pokemonListFrgToPokemonDetailFrg(selectedPokemon.name)
-                findNavController().navigate(action)
+                if(selectedPokemon.name != null){
+                    val action = PokemonListFrgDirections.pokemonListFrgToPokemonDetailFrg(selectedPokemon.name)
+                    findNavController().navigate(action)
+                }
+
             }
             binding.recyclerListPoke.adapter = adapter
         }

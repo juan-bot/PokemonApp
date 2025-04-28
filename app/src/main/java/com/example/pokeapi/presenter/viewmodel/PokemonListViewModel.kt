@@ -56,22 +56,24 @@ class PokemonListViewModel: ViewModel(){
         }
     }
     fun searchPoke(name: String){
-        viewModelScope.launch {
-            _pokeList.value = emptyList()
-            try {
-                when (val result = getPokemonUseCase.execute(name)){
-                    is ResultState.Success -> {
-                        _pokeList.value = listOf(result.data)
-                    }
-                }
-            }catch(e: Exception){
-                _error.value = "Error al encontrar el pokemon"
+        if(name.isNotEmpty())
+            viewModelScope.launch {
                 _pokeList.value = emptyList()
-                Log.e("PokemonViewModel", "Error al cargar los pokemones", e)
-            }finally {
-                Log.e("PokemonViewModel", "Error al cargar los pokemones")
+                try {
+                    when (val result = getPokemonUseCase.execute(name)){
+                        is ResultState.Success -> {
+                            _pokeList.value = listOf(result.data)
+                        }
+                    }
+                }catch(e: Exception){
+                    _error.value = "Error al encontrar el pokemon"
+                    _pokeList.value = emptyList()
+                    Log.e("PokemonViewModel", "Error al cargar los pokemones", e)
+                }finally {
+                    Log.e("PokemonViewModel", "Error al cargar los pokemones")
+                }
+
             }
 
-        }
     }
 }
