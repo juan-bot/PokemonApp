@@ -1,0 +1,22 @@
+# Ignore Android Studio specific files
+.idea/
+*.iml
+
+# Ignore Gradle build folders
+/build/
+*/build/
+
+# Ignore local configuration
+/local.properties
+
+# Ignore generated files
+.gradle/
+captures/
+output.json
+
+# Ignore miscellaneous
+.DS_Store
+*.log
+
+# Allow Version Catalogs (important!)
+!gradle/libs.versions.toml
